@@ -1,0 +1,137 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Process Mapping System</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src= "https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"> </script>
+	
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+	<script src="lib/jsBezier-0.6.js"></script>     
+    <script src="lib/jsplumb-geom-0.1.js"></script>
+	<script src="src/util.js"></script>
+	<script src="src/dom-adapter.js"></script>        
+	<script src="src/jsPlumb.js"></script>
+	<script src="src/endpoint.js"></script>                
+	<script src="src/connection.js"></script>
+	<script src="src/anchors.js"></script>        
+	<script src="src/defaults.js"></script>
+    <script src="src/connectors-bezier.js"></script>
+	<script src="src/connectors-statemachine.js"></script>
+	<script src="src/connectors-flowchart.js"></script>
+    <script src="src/connector-editors.js"></script>
+	<script src="src/renderers-svg.js"></script>
+	<script src="src/renderers-canvas.js"></script>
+	<script src="src/renderers-vml.js"></script>
+	<script src="src/jquery.jsPlumb.js"></script>
+
+
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	
+	<script type="text/javascript" src="js/menu/jquery.contextMenu.js"></script>
+	<script type="text/javascript" src="js/menu/jquery.ui.position.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/menu/jquery.contextMenu.css">
+	
+	 <!-- CSS -->
+     <link rel = "stylesheet" type = "text/css" href = "css/swim.css">
+      <!-- Javascript -->
+       <script>
+
+		
+		
+		function createJSON(){
+		var data = new Object();
+		$("input[class = process]").each(function(){
+			data[$(this).attr("name")] = $(this).val();
+		
+		jsonString = JSON.stringify(data);
+		
+		
+	});
+	
+		console.log(jsonString);
+		
+	}
+		function saveDiagram(){
+		
+		
+		
+		}
+	
+	
+	  
+	  
+	  
+	  
+	  
+	  </script> 
+
+	  
+	 </head>
+
+<body>
+<div class="container">
+	<div class="row clearfix top-header">
+		<div class="col-md-12 column">
+		<div id = "process_details" >
+		<span class="label label-primary top-label">Process Details</span><br/>
+	
+			Process Name:
+				<input type = "text" name = "process_name" id = "process_name" class = "process" required /> <br/><br/>
+				<input type = "hidden" name = "owner" id = "owner" class = "process"/>
+			Description:
+				<input type = "text" name = "desc" id = "desc" class = "process"/> <br/> <hr/>
+			<button name = "save" onclick = "saveDiagram();"> Save </button>
+			<button name = "load" onclick = "createJSON();">Load </button>
+			<button name = "download"> Download </button>
+			<button name = "cancel"> Cancel </button>
+		
+		</div>
+		</div>
+	</div>
+	<div class="row border-editor content-editor">
+		<div class="col-md-2 column heigh-editor border-right-editor">
+			 <span class="label label-info top-label">Tools</span>
+			 <ul class="tool-panel" id="sortable-element">
+			 	<!--<li attr-type="actor"> <img src="images/persona.png"> Actor</li>-->
+			 	<!--<li attr-type="caso_uso"> <img src="images/diagrama.png"> Caso de uso</li>-->
+				<li attr-type = "circle"> <img src= "images/circle-s.png"title = "Start/End">		Start/End</li></br>
+				<li attr-type = "rectangle"> <img src = "images/rec-s.png" title = "Task">		Task</li><br/>
+				<li attr-type = "diamond"> <img src= "images/diamond-s.png"title = "Decision">		Decision </li><br/>
+				<li attr-type = "para"> <img src= "images/input.png" title = "Data(I/O)">		Data (I/O) </li><br/>
+				<li attr-type = "manual"><img src = "images/manual.png"title = "Manual Input">		Manual Input</li><br/>
+				<li attr-type = "swimlane"> <img src = "images/swimlane.png"title = "Swimlane">		Swimlane </li><br/>
+				
+			 </ul>
+			<div id = "shape_details" hidden>
+			<span class="label label-warning top-label">Tool Properties</span><br/>
+			Title:
+				<input type = "text" name = "title" id = "title" class = "process"><br/>
+				<input type = "hidden" name = "subprocess" id = "subprocess" class = "process">
+			Description:
+				<input type = "text" name = "msg" id = "msg" class = "process"/> <br/>
+				<!--<input type = "submit" id = "submit">-->
+			
+			</div>
+			 
+		</div>
+		<div class="col-md-10 column heigh-editor">
+			 <span class="label label-danger top-label">Editor</span>
+			 <div class="css-editor" id="editor"> 
+			</div>
+	  </div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
